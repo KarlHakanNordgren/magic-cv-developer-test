@@ -2,6 +2,7 @@
 
 package fit.magic.cv.repcounter
 
+import android.content.Context
 import fit.magic.cv.PoseLandmarkerHelper
 
 abstract class ExerciseRepCounter {
@@ -10,7 +11,7 @@ abstract class ExerciseRepCounter {
 
     private var repCount = 0
 
-    abstract fun setResults(resultBundle: PoseLandmarkerHelper.ResultBundle)
+    abstract fun setResults(resultBundle: PoseLandmarkerHelper.ResultBundle, context: Context)
 
     fun setListener(listener: ExerciseEventListener?) {
         this.listener = listener
@@ -21,6 +22,10 @@ abstract class ExerciseRepCounter {
      */
     fun incrementRepCount() {
         repCount++
+        listener?.repCountUpdated(repCount)
+    }
+
+    fun setRepCount(repCount: Int) {
         listener?.repCountUpdated(repCount)
     }
 
