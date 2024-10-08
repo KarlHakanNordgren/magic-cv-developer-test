@@ -356,7 +356,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener, Exer
     override fun onResults(
         resultBundle: PoseLandmarkerHelper.ResultBundle
     ) {
-        exerciseRepCounter.setResults(resultBundle)
+        exerciseRepCounter.setResults(resultBundle, requireContext())
 
         activity?.runOnUiThread {
             if (_fragmentCameraBinding != null) {
